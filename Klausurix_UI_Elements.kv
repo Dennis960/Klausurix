@@ -1,0 +1,332 @@
+
+#==================================================================================================
+#==================================================================================================
+
+<Display>:
+
+    BoxLayout:
+        orientation: "vertical"
+
+        BoxLayout:
+            size_hint: 1, None
+            height: '48dp'
+            
+            Button:
+                text: 'Tab fuer die Erstellung von Pruefungen'
+                on_release: sm.current = 'tab_one'  
+
+            Button:
+                text: 'Tab fuer die Erstellung von Uebungen'
+                on_release: sm.current = 'tab_two'  
+                
+        ScreenManager:
+            id: sm
+            Tab_One:
+            Tab_Two:
+
+
+#==================================================================================================
+#==================================================================================================
+
+<Tab_One>:
+    name: 'tab_one' 
+
+    ScrollView:
+
+        background_color:1,1,1,1
+        bar_width: 30
+        bar_color: 1, 0, 0, 1   # red
+        bar_inactive_color: 0, 0, 1, 1   # blue
+        effect_cls: "ScrollEffect"
+        scroll_type: ['bars']
+        do_scroll_x:False
+        do_scroll_y:True
+
+
+        BoxLayout: 
+
+            orientation:'vertical'
+            size_hint_y: None
+            height:self.minimum_height
+            spacing:15  # Abstand zwischen den einzelnen Komponenten inerhalb des BoxLayout
+
+
+
+
+
+            #***************************************************************************************************
+            # 1 x Card fuer eine Pruefungsaufgabe/Loesung
+            #***************************************************************************************************
+            MDCard:
+                orientation: "vertical"
+                padding: "8dp"
+                size_hint: None, None
+                size: "750dp", "300dp"  # xBreite yBreite
+                pos_hint: {"center_x": .5, "center_y": .5}
+
+                MDLabel:
+                    text: "Pruefungsfrage 1"
+                    theme_text_color: "Secondary"
+                    size_hint_y: None
+                    height: self.texture_size[1]
+
+                MDSeparator:
+                    height: "1dp"
+
+                MDLabel:
+                    text: "Body"
+
+                MDTextField:
+                    hint_text: "Prüfungsfrage"
+                    helper_text: "in diesem Feld kann eine Prüfungsfrage eingegeben werden (LaTeX Syntax kann benutze werden)"
+                    helper_text_mode: "on_focus"
+                    # mode: "fill"
+                    mode: "rectangle"
+                    multiline: True  # Erlaubt mehrzeilige Eingaben
+                    pos_hint:{"center_x": .5,}
+                    size_hint: .5, None
+                    # icon_right: "arrow-down-drop-circle-outline"
+                    # icon_right_color: app.theme_cls.primary_color
+
+                MDTextField:
+                    hint_text: "Musterlösung"
+                    helper_text: "in diesem Feld kann eine Musterlösung eingegeben werden (LaTeX Syntax kann benutze werden)"
+                    helper_text_mode: "on_focus"
+                    # mode: "fill"
+                    mode: "rectangle"
+                    multiline: True  # Erlaubt mehrzeilige Eingaben
+                    pos_hint:{"center_x": .5,}
+                    size_hint: .5, None
+
+                MDSwitch:
+                    size_hint: None, None
+                    size: "48dp", "48dp"
+                    pos_hint: {'center_y': .5}
+                    # on_release: app.switch_text()
+
+                MDRoundFlatButton:
+                    text: "Frage und Lösung speichern"
+                    # text_color: 0, 1, 0, 1
+                    pos_hint: {'center_y': .5}
+                    # on_release: app.save_text()
+
+                MDRoundFlatIconButton:
+                    text: "Open manager"
+                    icon: "folder"
+                    pos_hint: {'center_y': .5}
+                    on_release: app.file_manager_open()
+            #***************************************************************************************************
+
+
+
+            #***************************************************************************************************
+            # 1 x Card fuer eine Pruefungsaufgabe/Loesung
+            #***************************************************************************************************
+            MDCard:
+                orientation: "vertical"
+                padding: "8dp"
+                size_hint: None, None
+                size: "750dp", "300dp"  # xBreite yBreite
+                pos_hint: {"center_x": .5, "center_y": .5}
+
+                MDLabel:
+                    text: "Pruefungsfrage 2"
+                    theme_text_color: "Secondary"
+                    size_hint_y: None
+                    height: self.texture_size[1]
+
+                MDSeparator:
+                    height: "1dp"
+
+                MDLabel:
+                    text: "Body"
+
+                MDTextField:
+                    hint_text: "Prüfungsfrage"
+                    helper_text: "in diesem Feld kann eine Prüfungsfrage eingegeben werden (LaTeX Syntax kann benutze werden)"
+                    helper_text_mode: "on_focus"
+                    # mode: "fill"
+                    mode: "rectangle"
+                    multiline: True  # Erlaubt mehrzeilige Eingaben
+                    pos_hint:{"center_x": .5,}
+                    size_hint: .5, None
+                    # icon_right: "arrow-down-drop-circle-outline"
+                    # icon_right_color: app.theme_cls.primary_color
+
+                MDTextField:
+                    hint_text: "Musterlösung"
+                    helper_text: "in diesem Feld kann eine Musterlösung eingegeben werden (LaTeX Syntax kann benutze werden)"
+                    helper_text_mode: "on_focus"
+                    # mode: "fill"
+                    mode: "rectangle"
+                    multiline: True  # Erlaubt mehrzeilige Eingaben
+                    pos_hint:{"center_x": .5,}
+                    size_hint: .5, None
+
+                MDSwitch:
+                    size_hint: None, None
+                    size: "48dp", "48dp"
+                    pos_hint: {'center_y': .5}
+                    # on_release: app.switch_text()
+
+                MDRoundFlatButton:
+                    text: "Frage und Lösung speichern"
+                    # text_color: 0, 1, 0, 1
+                    pos_hint: {'center_y': .5}
+                    # on_release: app.save_text()
+
+                MDRoundFlatIconButton:
+                    text: "Open manager"
+                    icon: "folder"
+                    pos_hint: {'center_y': .5}
+                    on_release: app.file_manager_open()
+            #***************************************************************************************************
+
+
+
+            #***************************************************************************************************
+            # 1 x Card fuer eine Pruefungsaufgabe/Loesung
+            #***************************************************************************************************
+            MDCard:
+                orientation: "vertical"
+                padding: "8dp"
+                size_hint: None, None
+                size: "750dp", "300dp"  # xBreite yBreite
+                pos_hint: {"center_x": .5, "center_y": .5}
+
+                MDLabel:
+                    text: "Pruefungsfrage 3"
+                    theme_text_color: "Secondary"
+                    size_hint_y: None
+                    height: self.texture_size[1]
+
+                MDSeparator:
+                    height: "1dp"
+
+                MDLabel:
+                    text: "Body"
+
+                MDTextField:
+                    hint_text: "Prüfungsfrage"
+                    helper_text: "in diesem Feld kann eine Prüfungsfrage eingegeben werden (LaTeX Syntax kann benutze werden)"
+                    helper_text_mode: "on_focus"
+                    # mode: "fill"
+                    mode: "rectangle"
+                    multiline: True  # Erlaubt mehrzeilige Eingaben
+                    pos_hint:{"center_x": .5,}
+                    size_hint: .5, None
+                    # icon_right: "arrow-down-drop-circle-outline"
+                    # icon_right_color: app.theme_cls.primary_color
+
+                MDTextField:
+                    hint_text: "Musterlösung"
+                    helper_text: "in diesem Feld kann eine Musterlösung eingegeben werden (LaTeX Syntax kann benutze werden)"
+                    helper_text_mode: "on_focus"
+                    # mode: "fill"
+                    mode: "rectangle"
+                    multiline: True  # Erlaubt mehrzeilige Eingaben
+                    pos_hint:{"center_x": .5,}
+                    size_hint: .5, None
+
+                MDSwitch:
+                    size_hint: None, None
+                    size: "48dp", "48dp"
+                    pos_hint: {'center_y': .5}
+                    # on_release: app.switch_text()
+
+                MDRoundFlatButton:
+                    text: "Frage und Lösung speichern"
+                    # text_color: 0, 1, 0, 1
+                    pos_hint: {'center_y': .5}
+                    # on_release: app.save_text()
+
+                MDRoundFlatIconButton:
+                    text: "Open manager"
+                    icon: "folder"
+                    pos_hint: {'center_y': .5}
+                    on_release: app.file_manager_open()
+            #***************************************************************************************************
+
+
+
+#***************************************************************************************************
+            # 1 x Card fuer eine Pruefungsaufgabe/Loesung
+            #***************************************************************************************************
+            MDCard:
+                orientation: "vertical"
+                padding: "8dp"
+                size_hint: None, None
+                size: "750dp", "300dp"  # xBreite yBreite
+                pos_hint: {"center_x": .5, "center_y": .5}
+
+                MDLabel:
+                    text: "Pruefungsfrage 4"
+                    theme_text_color: "Secondary"
+                    size_hint_y: None
+                    height: self.texture_size[1]
+
+                MDSeparator:
+                    height: "1dp"
+
+                MDLabel:
+                    text: "Body"
+
+                MDTextField:
+                    hint_text: "Prüfungsfrage"
+                    helper_text: "in diesem Feld kann eine Prüfungsfrage eingegeben werden (LaTeX Syntax kann benutze werden)"
+                    helper_text_mode: "on_focus"
+                    # mode: "fill"
+                    mode: "rectangle"
+                    multiline: True  # Erlaubt mehrzeilige Eingaben
+                    pos_hint:{"center_x": .5,}
+                    size_hint: .5, None
+                    # icon_right: "arrow-down-drop-circle-outline"
+                    # icon_right_color: app.theme_cls.primary_color
+
+                MDTextField:
+                    hint_text: "Musterlösung"
+                    helper_text: "in diesem Feld kann eine Musterlösung eingegeben werden (LaTeX Syntax kann benutze werden)"
+                    helper_text_mode: "on_focus"
+                    # mode: "fill"
+                    mode: "rectangle"
+                    multiline: True  # Erlaubt mehrzeilige Eingaben
+                    pos_hint:{"center_x": .5,}
+                    size_hint: .5, None
+
+                MDSwitch:
+                    size_hint: None, None
+                    size: "48dp", "48dp"
+                    pos_hint: {'center_y': .5}
+                    # on_release: app.switch_text()
+
+                MDRoundFlatButton:
+                    text: "Frage und Lösung speichern"
+                    # text_color: 0, 1, 0, 1
+                    pos_hint: {'center_y': .5}
+                    # on_release: app.save_text()
+
+                MDRoundFlatIconButton:
+                    text: "Open manager"
+                    icon: "folder"
+                    pos_hint: {'center_y': .5}
+                    on_release: app.file_manager_open()
+            #***************************************************************************************************
+
+
+
+
+
+
+
+#==================================================================================================
+#==================================================================================================
+
+<Tab_Two>:
+    name: 'tab_two'      
+    Button:
+        text: 'two'
+
+
+
+#==================================================================================================
+#==================================================================================================
