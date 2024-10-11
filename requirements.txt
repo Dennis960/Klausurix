@@ -1,0 +1,4 @@
+kivy[full]
+kivy_examples
+kivymd
+reportlab
