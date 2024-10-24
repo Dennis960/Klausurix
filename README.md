@@ -1,5 +1,5 @@
-- Install requirements.txt
 - Create venv
+- Install requirements.txt
 - run python manage.py makemigrations
 - run python manage.py migrate
 - run python manage.py runserver
