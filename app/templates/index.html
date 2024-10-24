@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Klausrix - Reusable Button</title>
+  </head>
+  <body>
+    <!-- Add the menubar here -->
+    {% include 'includes/menubar/menubar.html' %}
+
+    <!-- Add the tab bar here -->
+    {% include 'includes/tabbar/tabbar.html' %}
+
+    {% if exam_id %}
+      {% for question in questions %}
+          {% include 'includes/question/question_form.html' with exam_id=exam_id question=question %}
+      {% endfor %}
+      {% include 'includes/question/question_form.html' with exam_id=exam_id %}
+    {% endif %}
+  </body>
+</html>

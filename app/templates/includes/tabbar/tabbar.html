@@ -1,0 +1,7 @@
+<div class="tabbar">
+  <ul>
+    {% for exam in open_exams %}
+      <li>{% include 'includes/tabbar/tab.html' with text=exam.title id=exam.id %}</li>
+    {% endfor %}
+  </ul>
+</div>

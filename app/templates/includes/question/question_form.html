@@ -1,0 +1,21 @@
+<form action="/exams/{{ exam_id }}{% if question.id %}/questions/{{ question.id }}/{% else %}/questions/{% endif %}" method="POST">
+    {% csrf_token %}
+    <h2>Frage</h2>
+
+    <label for="question_text">Fragetext:</label>
+    <input type="text" id="question_text" name="question_text" value="{{ question.question_text }}" />
+
+    <label for="answer_text">Musterlösung:</label>
+    <input type="text" id="answer_text" name="answer_text" value="{{ question.answer_text }}" />
+
+    <label for="freitextantwort">Freitextantwort:</label>
+    <input type="checkbox" id="freitextantwort" name="freitextantwort" />
+
+    <label for="frageaktivieren">Frage aktivieren:</label>
+    <input type="checkbox" id="frageaktivieren" name="frageaktivieren" />
+
+    <label for="pflichtfrage">Pflichtfrage oder Wahlfrage:</label>
+    <input type="checkbox" id="pflichtfrage" name="pflichtfrage" />
+
+    <button type="submit">Submit</button>
+</form>

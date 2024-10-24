@@ -1,4 +1,5 @@
-kivy[full]
-kivy_examples
-kivymd
-reportlab
+Django
+whitenoise
+flaskwebgui
+PyInstaller
+waitress

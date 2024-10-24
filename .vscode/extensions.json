@@ -1,8 +1,5 @@
 {
     "recommendations": [
-        "ms-python.python",
-        "battlebas.kivy-vscode",
-        "tomoki1207.pdf",
-        "ms-python.autopep8"
+        "batisteo.vscode-django"
     ]
 }
