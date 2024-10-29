@@ -1,1 +1,1 @@
-<a class="tab" href="/exams/{{id}}">{{ text }}</a>
+<a class="tab{% if id == exam_id %} selected{% endif %}" href="/exams/{{ id }}">{{ text }}</a>

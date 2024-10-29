@@ -17,13 +17,25 @@
         Klausur mit der Id
         {{ exam_id }}  
       </h1>
-    {% include 'includes/question/question_list.html' with questions=questions exam_id=exam_id %}
-      <form method="DELETE" action="/exams/{{ exam_id }}/">
-        {% csrf_token %}
-        <button type="submit">
-          Klausur loeschen
-        </button>
-      </form>
+    <div id="question-list">
+      {% include 'includes/question/question_list.html' with questions=questions exam_id=exam_id %}
+    </div>
+    <form
+      hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'
+      hx-delete="/exams/{{ exam_id }}/"
+      hx-trigger="submit"
+      >
+      <button type="submit">
+        Klausur loeschen
+      </button>
+    </form>
+    {% else %}
+      <h1>
+        Willkommen bei Klausrix
+      </h1>
+      <span>
+        Es ist keine Klausur ausgewählt
+      </span>
     {% endif %}
     <script src="{% static 'htmx.js' %}"></script>
   </body>

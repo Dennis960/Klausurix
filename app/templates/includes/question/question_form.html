@@ -5,7 +5,7 @@
     hx-target="this"
     hx-swap="outerHTML">
     {% csrf_token %}
-    <h2>Frage</h2>
+    <h2>Frage mit id {{ question.id }}</h2>
 
     <label for="question_text">Fragetext:
         <input type="text" id="question_text" name="question_text" value="{{ question.question_text }}" />

@@ -38,7 +38,9 @@ def exams_id(request, exam_id):
     if request.method == 'DELETE':
         exam = Exam.objects.get(id=exam_id)
         exam.delete()
-        return HttpResponseRedirect(reverse('index'))
+        response = HttpResponse()
+        response['HX-Redirect'] = reverse('index')
+        return response
 
 def exam_questions(request, exam_id):
     if request.method == 'POST':

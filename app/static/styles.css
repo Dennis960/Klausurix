@@ -48,4 +48,30 @@ label input[type="text"] {
     border-radius: 2px;
     text-decoration: none;
     color: black;
+    background-color: white;
+}
+
+.tab.selected {
+    border-bottom: none;
+    transform: scale(1.05);
+    z-index: 1;
+}
+
+.tabbar button[type="submit"] {
+    background-color: #003A79;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    border: none;
+    border-radius: 2px;
+    padding: 8px 16px;
+    cursor: pointer;
+}
+
+.tabbar button[type="submit"]:hover {
+    background-color: #002A59;
+}
+
+.tabbar button[type="submit"]:active {
+    background-color: #001A39;
 }
