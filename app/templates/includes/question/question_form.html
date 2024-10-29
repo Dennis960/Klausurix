@@ -1,30 +1,37 @@
 <form
+    class="question-form"
+    id="question-form-{{ question.id }}"
     hx-post="/exams/{{ exam_id }}/questions/{{ question.id }}/"
     hx-target="this"
     hx-swap="outerHTML">
     {% csrf_token %}
     <h2>Frage</h2>
 
-    <label for="question_text">Fragetext:</label>
-    <input type="text" id="question_text" name="question_text" value="{{ question.question_text }}" />
+    <label for="question_text">Fragetext:
+        <input type="text" id="question_text" name="question_text" value="{{ question.question_text }}" />
+    </label>
 
-    <label for="answer_text">Musterlösung:</label>
-    <input type="text" id="answer_text" name="answer_text" value="{{ question.answer_text }}" />
+    <label for="answer_text">Musterlösung:
+        <input type="text" id="answer_text" name="answer_text" value="{{ question.answer_text }}" />
+    </label>
 
-    <label for="freitextantwort">Freitextantwort:</label>
-    <input type="checkbox" id="freitextantwort" name="freitextantwort" />
+    <label for="freitextantwort">Freitextantwort:
+        <input type="checkbox" id="freitextantwort" name="freitextantwort" />
+    </label>
 
-    <label for="frageaktivieren">Frage aktivieren:</label>
-    <input type="checkbox" id="frageaktivieren" name="frageaktivieren" />
+    <label for="frageaktivieren">Frage aktivieren:
+        <input type="checkbox" id="frageaktivieren" name="frageaktivieren" />
+    </label>
 
-    <label for="pflichtfrage">Pflichtfrage oder Wahlfrage:</label>
-    <input type="checkbox" id="pflichtfrage" name="pflichtfrage" />
+    <label for="pflichtfrage">Pflichtfrage oder Wahlfrage:
+        <input type="checkbox" id="pflichtfrage" name="pflichtfrage" />
+    </label>
 
     <button type="submit">Submit</button>
     <button
         hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'
         hx-delete="/exams/{{ exam_id }}/questions/{{ question.id }}/"
-        hx-target="form"
+        hx-target="#question-form-{{ question.id }}"
         hx-swap="outerHTML">
         Delete
     </button>

@@ -1,5 +1,6 @@
 {
     "recommendations": [
-        "batisteo.vscode-django"
+        "batisteo.vscode-django",
+        "junstyle.vscode-django-support"
     ]
 }

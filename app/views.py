@@ -10,20 +10,35 @@ def index(request):
         'open_exams': exams
     })
 
-# View for the exam page (GET request)
-def exam(request, exam_id):
-    def get_questions_for_exam(id: int):
-        exam = Exam.objects.get(id=id)
-        questions = Question.objects.filter(exam=exam)
-        return questions
-    questions = get_questions_for_exam(exam_id)
-    exams = Exam.objects.all()
+def exams(request):
+    if request.method == 'POST':
+        exam = Exam(title='New Exam')
+        exam.save()
+        return HttpResponseRedirect(reverse('exams_id', args=(exam.id,)))
+    if request.method == 'DELETE':
+        exam = Exam.objects.get(id=request.POST.get('exam_id', ''))
+        exam.delete()
+        return HttpResponse()
 
-    return render(request, 'index.html', {
-        'questions': questions,
-        'exam_id': exam_id,
-        'open_exams': exams
-    })
+# View for the exam page (GET request)
+def exams_id(request, exam_id):
+    if request.method == 'GET':
+        def get_questions_for_exam(id: int):
+            exam = Exam.objects.get(id=id)
+            questions = Question.objects.filter(exam=exam)
+            return questions
+        questions = get_questions_for_exam(exam_id)
+        exams = Exam.objects.all()
+
+        return render(request, 'index.html', {
+            'questions': questions,
+            'exam_id': exam_id,
+            'open_exams': exams
+        })
+    if request.method == 'DELETE':
+        exam = Exam.objects.get(id=exam_id)
+        exam.delete()
+        return HttpResponseRedirect(reverse('index'))
 
 def exam_questions(request, exam_id):
     if request.method == 'POST':

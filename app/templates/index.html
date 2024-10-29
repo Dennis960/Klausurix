@@ -1,19 +1,30 @@
 <!DOCTYPE html>
 <html>
+  {% load static %}
   <head>
     <title>Klausrix - Reusable Button</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
   </head>
   <body>
-        <!-- Add the menubar here -->
-        {% include 'includes/menubar/menubar.html' %}
+    <!-- Add the menubar here -->
+    {% include 'includes/menubar/menubar.html' %}
 
-        <!-- Add the tab bar here -->
-        {% include 'includes/tabbar/tabbar.html' %}
+    <!-- Add the tab bar here -->
+    {% include 'includes/tabbar/tabbar.html' %}
 
-        {% if exam_id %}
-          {% include 'includes/question/question_list.html' with questions=questions exam_id=exam_id %}
-        {% endif %}
-        {% load static %}
-        <script src="{% static 'htmx.js' %}"></script>
-      </body>
-    </html>
+    {% if exam_id %}
+      <h1>
+        Klausur mit der Id
+        {{ exam_id }}  
+      </h1>
+    {% include 'includes/question/question_list.html' with questions=questions exam_id=exam_id %}
+      <form method="DELETE" action="/exams/{{ exam_id }}/">
+        {% csrf_token %}
+        <button type="submit">
+          Klausur loeschen
+        </button>
+      </form>
+    {% endif %}
+    <script src="{% static 'htmx.js' %}"></script>
+  </body>
+</html>

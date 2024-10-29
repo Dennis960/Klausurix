@@ -21,7 +21,8 @@ from app import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index, name='index'),
-    path('exams/<int:exam_id>/', views.exam, name='exam'),
-    path('exams/<int:exam_id>/questions/', views.exam_questions, name='exam_questions'),
-    path('exams/<int:exam_id>/questions/<int:question_id>/', views.exam_questions_id, name='exam_questions_id'),
+    path('exams/', views.exams, name='exams'),
+    path('exams/<int:exam_id>/', views.exams_id, name='exams_id'),
+    path('exams/<int:exam_id>/questions/', views.exam_questions, name='exams_questions'),
+    path('exams/<int:exam_id>/questions/<int:question_id>/', views.exam_questions_id, name='exams_questions_id'),
 ]

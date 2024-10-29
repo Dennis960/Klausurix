@@ -1,7 +1,15 @@
 <div class="tabbar">
-  <ul>
+    <div class=tabbar id="tabs">
     {% for exam in open_exams %}
-      <li>{% include 'includes/tabbar/tab.html' with text=exam.title id=exam.id %}</li>
+      {% include 'includes/tabbar/tab.html' with text=exam.title id=exam.id %}
     {% endfor %}
-  </ul>
+    </div>
+
+  <form method="POST" action="/exams/">
+    {% csrf_token %}
+    <button type="submit">
+      +
+    </button>
+  </form>
 </div>
+

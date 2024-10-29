@@ -1,7 +1,7 @@
-{% for question in questions %}
-    {% include 'includes/question/question_form.html' with question=question exam_id=exam_id%}
-{% endfor %}
 <div id="question_list">
+    {% for question in questions %}
+        {% include 'includes/question/question_form.html' with question=question exam_id=exam_id%}
+    {% endfor %}
 </div>
 <button
     hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'
