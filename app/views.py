@@ -1,4 +1,4 @@
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render
 from django.urls import reverse
 from .models import Question, Exam
@@ -27,16 +27,13 @@ def exam(request, exam_id):
 
 def exam_questions(request, exam_id):
     if request.method == 'POST':
-        # Extract the input from the form
-        question_text = request.POST.get('question_text', '')  # Get the 'question_text' value from the form
-        answer_text = request.POST.get('answer_text', '')  # Get the 'answer_text' value from the form
-        print(f"Question text: {question_text}, Answer text: {answer_text}")
-        # Create a new Question object and save it to the database
         exam = Exam.objects.get(id=exam_id)
-        question = Question(question_text=question_text, answer_text=answer_text, exam=exam)
+        question = Question(exam=exam)
         question.save()
-
-    return HttpResponseRedirect(reverse('exam', args=[exam_id]))
+        return render(request, 'includes/question/question_form.html', {
+            'exam_id': exam_id,
+            'question': question
+        })
 
 def exam_questions_id(request, exam_id, question_id):
     if request.method == 'POST':
@@ -48,9 +45,12 @@ def exam_questions_id(request, exam_id, question_id):
         question.question_text = question_text
         question.answer_text = answer_text
         question.save()
+        return render(request, 'includes/question/question_form.html', {
+            'question': question,
+            'exam_id': exam_id
+        })
     elif request.method == 'DELETE':
         # Delete the Question object with the specified ID
         question = Question.objects.get(id=question_id)
         question.delete()
-    
-    return HttpResponseRedirect(reverse('exam', args=[exam_id]))
+        return HttpResponse()

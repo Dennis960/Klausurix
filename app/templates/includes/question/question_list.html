@@ -1,0 +1,11 @@
+{% for question in questions %}
+    {% include 'includes/question/question_form.html' with question=question exam_id=exam_id%}
+{% endfor %}
+<div id="question_list">
+</div>
+<button
+    hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'
+    hx-post="/exams/{{ exam_id }}/questions/"
+    hx-target="#question_list"
+    hx-swap="beforeend"
+>Frage hinzufügen</button>

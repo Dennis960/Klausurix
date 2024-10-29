@@ -4,17 +4,16 @@
     <title>Klausrix - Reusable Button</title>
   </head>
   <body>
-    <!-- Add the menubar here -->
-    {% include 'includes/menubar/menubar.html' %}
+        <!-- Add the menubar here -->
+        {% include 'includes/menubar/menubar.html' %}
 
-    <!-- Add the tab bar here -->
-    {% include 'includes/tabbar/tabbar.html' %}
+        <!-- Add the tab bar here -->
+        {% include 'includes/tabbar/tabbar.html' %}
 
-    {% if exam_id %}
-      {% for question in questions %}
-          {% include 'includes/question/question_form.html' with exam_id=exam_id question=question %}
-      {% endfor %}
-      {% include 'includes/question/question_form.html' with exam_id=exam_id %}
-    {% endif %}
-  </body>
-</html>
+        {% if exam_id %}
+          {% include 'includes/question/question_list.html' with questions=questions exam_id=exam_id %}
+        {% endif %}
+        {% load static %}
+        <script src="{% static 'htmx.js' %}"></script>
+      </body>
+    </html>

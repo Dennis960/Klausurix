@@ -1,4 +1,7 @@
-<form action="/exams/{{ exam_id }}{% if question.id %}/questions/{{ question.id }}/{% else %}/questions/{% endif %}" method="POST">
+<form
+    hx-post="/exams/{{ exam_id }}/questions/{{ question.id }}/"
+    hx-target="this"
+    hx-swap="outerHTML">
     {% csrf_token %}
     <h2>Frage</h2>
 
@@ -18,4 +21,11 @@
     <input type="checkbox" id="pflichtfrage" name="pflichtfrage" />
 
     <button type="submit">Submit</button>
+    <button
+        hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'
+        hx-delete="/exams/{{ exam_id }}/questions/{{ question.id }}/"
+        hx-target="form"
+        hx-swap="outerHTML">
+        Delete
+    </button>
 </form>
