@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
+import os
+import sys
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -72,12 +74,21 @@ WSGI_APPLICATION = 'klausurix.wsgi.application'
 
 
 # Database
-# https://docs.djangoproject.com/en/5.1/ref/settings/#databases
+# https://docs.djangoproject.com/en/5.1/ref/settings/#database
+if getattr(sys, 'frozen', False):
+    # Running as a packaged application
+    PATH_TO_EXE = os.path.dirname(sys.executable)
+    DB_PATH = os.path.join(PATH_TO_EXE, 'db.sqlite3')
+    print(f'Running as a packaged application, DB_PATH={DB_PATH}')
+else:
+    # Running in a normal Python environment
+    DB_PATH = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'db.sqlite3')
+    print(f'Running in a normal Python environment, DB_PATH={DB_PATH}')
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': DB_PATH,
     }
 }
 
@@ -116,7 +127,11 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
-STATIC_URL = 'static/'
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
