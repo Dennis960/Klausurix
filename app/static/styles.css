@@ -1,6 +1,6 @@
 button {
     border-radius: 2px;
-    border: 1px solid #dedede;
+    border: 1px solid #bdbdbd;
     background-color: white;
     height: 34px;
     padding: 2px 8px;
@@ -16,7 +16,7 @@ button:active {
 
 input[type="text"] {
     border-radius: 2px;
-    border: 1px solid #dedede;
+    border: 1px solid #bdbdbd;
     padding: 8px 8px;
 }
 
@@ -30,7 +30,7 @@ label input[type="text"] {
     display: flex;
     flex-direction: column;
     margin-bottom: 16px;
-    border: 1px solid #dedede;
+    border: 1px solid #bdbdbd;
     border-radius: 2px;
     padding: 16px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -44,7 +44,7 @@ label input[type="text"] {
 
 .tab {
     padding: 8px 16px;
-    border: 1px solid #dedede;
+    border: 1px solid #bdbdbd;
     border-radius: 2px;
     text-decoration: none;
     color: black;
