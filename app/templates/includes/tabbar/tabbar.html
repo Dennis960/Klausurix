@@ -2,9 +2,8 @@
   {% for exam in open_exams %}
     {% include 'includes/tabbar/tab.html' with text=exam.title id=exam.id %}
   {% endfor %}
-
-  <form method="POST" action="/exams/" style="height: 100%">
-    {% csrf_token %}
-    <button type="submit">+</button>
-  </form>
+  <button
+  hx-post="/exams/"
+  hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'
+  type="submit">+</button>
 </div>

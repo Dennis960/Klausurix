@@ -1,4 +1,4 @@
-from django.http import HttpResponseRedirect, HttpResponse
+from django.http import HttpResponse
 from django.shortcuts import render
 from django.urls import reverse
 from .models import Question, Exam
@@ -14,7 +14,9 @@ def exams(request):
     if request.method == 'POST':
         exam = Exam(title='New Exam')
         exam.save()
-        return HttpResponseRedirect(reverse('exams_id', args=(exam.id,)))
+        response = HttpResponse()
+        response['HX-Redirect'] = reverse('exams_id', args=(exam.id,))
+        return response
     if request.method == 'DELETE':
         exam = Exam.objects.get(id=request.POST.get('exam_id', ''))
         exam.delete()

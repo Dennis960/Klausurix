@@ -1,0 +1,73 @@
+.menubar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 8px;
+    height: 26px;
+    background-color: rgba(0, 58, 121, 0.8);
+    color: white;
+}
+
+.menubar ul {
+    display: flex;
+    flex-direction: row;
+    list-style-type: none;
+    padding: 0;
+}
+
+.menubar ul li {
+    position: relative;
+}
+
+.menubar ul li ul {
+    position: absolute;
+    width: fit-content;
+    word-break: keep-all;
+    white-space: nowrap;
+    top: 100%;
+    left: 0;
+    border: 1px solid #bdbdbd;
+    background-color: white;
+    border-radius: 2px;
+    color: black;
+    z-index: 2;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    flex-direction: column;
+    display: none;
+}
+
+.menubar ul li ul li {
+    cursor: pointer;
+    padding: 5px 10px;
+}
+
+.menubar ul li ul li:hover {
+    background-color: #f9f9f9;
+}
+
+.menubar ul li ul li.divider {
+    border-top: 1px solid #bdbdbd;
+    padding: 0;
+    margin: 4px 10px;
+}
+
+.menubar ul li:has(input[type="checkbox"]:checked) ul {
+    display: flex;
+}
+
+.menubar input[type="checkbox"] {
+    display: none;
+    width: 0;
+    height: 0;
+}
+
+.menubar button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.menubar li.disabled {
+    color: #bdbdbd;
+    cursor: not-allowed;
+}

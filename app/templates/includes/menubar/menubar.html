@@ -1,5 +1,37 @@
 <div class="menubar">
   <ul>
-    <li><a href="#">Datei</a></li>
+    <li>
+      <label for="menubar-file">
+        <input id="menubar-file" type="checkbox" />Datei
+        <ul>
+          <li
+            hx-post="/exams/"
+            hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'
+          >
+          Neue Klausur erstellen
+          </li>
+          <li class="disabled">Klausur öffnen</li>
+          <li class="disabled">Als letztes bearbeitete Klausur öffnen</li>
+          <li class="divider"></li>
+          <li class="disabled">Speichern als...</li>
+          <li class="disabled">Alle ungespeicherten Klausuren speichern</li>
+          <li class="disabled">Alles als PDF exportieren</li>
+          <li class="disabled">Als PDF ohne Lösungen exportieren</li>
+          <li class="disabled">Als PDF mit Lösungen exportieren</li>
+          <li class="disabled">Als LaTeX exportieren</li>
+        </ul>
+      </label>
+    </li>
   </ul>
 </div>
+
+<script>
+  document.addEventListener('click', function(event) {
+    const checkbox = document.getElementById('menubar-file');
+    const target = event.target;
+
+    if (target !== checkbox && target !== checkbox.parentElement) {
+      checkbox.checked = false;
+    }
+  });
+</script>
