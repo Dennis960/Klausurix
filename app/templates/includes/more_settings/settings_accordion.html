@@ -1,0 +1,24 @@
+<div class="settings">
+  <div class="accordion">
+    <label for="more_settings_accordion">
+      <input type="checkbox" id="more_settings_accordion" />
+      <h2>Weitere Einstellungen</h2>
+    </label>
+    <form class="combined-button" hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}' hx-post="/exams/{{ exam_id }}/settings/number_of_questions/">
+      <label for="number_of_questions">Zufällige Anzahl Fragen auswählen</label>
+      <input type="number" id="number_of_questions" name="number_of_questions" placeholder="Anzahl" />
+      <button type="submit">Anwenden</button>
+    </form>
+  </div>
+
+  <div class="accordion">
+    <label for="filter_and_search_accordion">
+      <input type="checkbox" id="filter_and_search_accordion" />
+      <h2>Filter und Suchen</h2>
+    </label>
+    <form hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}' hx-post="/exams/{{ exam_id }}/search/">
+      <label for="global_search">Globale Suche</label>
+      <input type="text" id="global_search" name="global_search" placeholder="Stichwort eingeben..." />
+    </form>
+  </div>
+</div>

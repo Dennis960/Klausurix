@@ -1,0 +1,81 @@
+.settings {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.settings form {
+    display: none;
+    grid-template-columns: 1fr auto;
+    row-gap: 4px;
+    width: fit-content;
+    margin-left: 10px;
+}
+
+.settings .accordion input[type="checkbox"] {
+    display: none;
+    width: 0px;
+    height: 0px;
+}
+
+.settings .accordion:has(input[type="checkbox"]:checked) form {
+    display: grid;
+}
+
+.settings .accordion input[type="checkbox"]+h2::before {
+    content: "▶";
+    margin-right: 16px;
+    width: 28px;
+    height: 28px;
+    display: inline-block;
+}
+
+.settings .accordion input[type="checkbox"]:checked+h2::before {
+    content: "▼";
+    margin-right: 16px;
+    width: 28px;
+    height: 28px;
+    display: inline-block;
+}
+
+.settings form label {
+    grid-column: 1 / -1;
+}
+
+.settings .combined-button button {
+    border-radius: 0px;
+    border-top-right-radius: 2px;
+    border-bottom-right-radius: 2px;
+    border: 1px solid #bdbdbd;
+    border-left: none;
+    background-color: #003A79;
+    color: white;
+    height: 34px;
+    padding: 2px 8px;
+}
+
+.settings .combined-button button:hover {
+    background-color: #002A59;
+}
+
+.settings .combined-button button:active {
+    background-color: #001A39;
+}
+
+.settings .combined-button input[type="number"] {
+    border-radius: 0px;
+    border-top-left-radius: 2px;
+    border-bottom-left-radius: 2px;
+    border-right: none;
+}
+
+.settings input {
+    border-radius: 2px;
+    border: 1px solid #bdbdbd;
+    padding: 8px 8px;
+}
+
+.settings h2 {
+    margin: 0;
+    margin-bottom: 8px;
+}

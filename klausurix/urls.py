@@ -27,4 +27,5 @@ urlpatterns = [
     path('exams/<int:exam_id>/', views.exams_id, name='exams_id'),
     path('exams/<int:exam_id>/questions/', views.exam_questions, name='exams_questions'),
     path('exams/<int:exam_id>/questions/<int:question_id>/', views.exam_questions_id, name='exams_questions_id'),
+    path('exams/<int:exam_id>/settings/number_of_questions/', views.exams_id_settings_number_of_questions, name='exams_id_settings_number_of_questions'),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

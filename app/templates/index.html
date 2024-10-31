@@ -5,6 +5,7 @@
     <title>Klausurix</title>
     <link rel="stylesheet" href="{% static 'styles.css' %}">
     <link rel="stylesheet" href="{% static 'menubar.css' %}">
+    <link rel="stylesheet" href="{% static 'more_settings.css' %}">
   </head>
   <body>
     <!-- Add the menubar here -->
@@ -14,6 +15,7 @@
     {% include 'includes/tabbar/tabbar.html' %}
 
     {% if exam_id %}
+      {% include 'includes/more_settings/settings_accordion.html' %}
       <h1>
         Klausur mit der Id
         {{ exam_id }}  

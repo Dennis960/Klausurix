@@ -9,3 +9,4 @@ class Question(models.Model):
     exam = models.ForeignKey(Exam, on_delete=models.CASCADE)
     question_text = models.TextField()
     answer_text = models.TextField()
+    is_active = models.BooleanField(default=True)

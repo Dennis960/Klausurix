@@ -19,8 +19,8 @@
         <input type="checkbox" id="freitextantwort" name="freitextantwort" />
     </label>
 
-    <label for="frageaktivieren">Frage aktivieren:
-        <input type="checkbox" id="frageaktivieren" name="frageaktivieren" />
+    <label for="question-form-{{ question.id }}-is_active">Frage aktivieren:
+        <input type="checkbox" id="question-form-{{ question.id }}-is_active" name="is_active" {% if question.is_active %}checked{% endif %} />
     </label>
 
     <label for="pflichtfrage">Pflichtfrage oder Wahlfrage:
