@@ -1,2 +1,2 @@
 python manage.py collectstatic --noinput
-python -m PyInstaller --name Klausrix --onefile --noconsole --add-data app/templates/:app/templates --exclude=db.sqlite3 gui.py
+python -m PyInstaller --name Klausurix --onefile --noconsole --add-data app/templates/:app/templates --exclude=db.sqlite3 gui.py

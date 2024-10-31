@@ -1,0 +1,47 @@
+name: Build Klausurix Executables
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  build-linux:
+    runs-on: ubuntu-latest
+    container:
+      image: batonogov/pyinstaller-linux:latest
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v4
+
+      - name: Install dependencies and build Linux executable
+        run: |
+          pip install -r requirements.txt
+          ./scripts/build
+
+      - name: Upload Linux artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: Klausurix-linux
+          path: ./dist/Klausurix
+          expire-in: 1h
+
+  build-windows:
+    runs-on: ubuntu-latest
+    container:
+      image: batonogov/pyinstaller-windows:latest
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v4
+
+      - name: Install dependencies and build Windows executable
+        run: |
+          pip install -r requirements.txt
+          ./scripts/build
+
+      - name: Upload Windows artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: Klausurix-windows
+          path: ./dist/Klausurix.exe

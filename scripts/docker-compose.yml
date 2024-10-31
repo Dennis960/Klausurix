@@ -1,0 +1,22 @@
+version: '3.8'
+
+# https://github.com/batonogov/docker-pyinstaller
+
+services:
+  # Linux build service
+  pyinstaller-linux:
+    image: batonogov/pyinstaller-linux:latest
+    volumes:
+      - ..:/src
+    working_dir: /src
+    entrypoint: /bin/sh
+    command: -c "pip install -r requirements.txt && ./scripts/build"
+
+  # Windows build service
+  pyinstaller-windows:
+    image: batonogov/pyinstaller-windows:latest
+    volumes:
+      - ..:/src
+    working_dir: /src
+    entrypoint: /bin/sh
+    command: -c "pip install -r requirements.txt && ./scripts/build"
